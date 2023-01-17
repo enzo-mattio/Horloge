@@ -1,9 +1,34 @@
 import time
 
-def votre_heure(heure, minutes, secondes, affichage):
+def votre_heure(heure, minutes, secondes):
   
   temps = True
+  alarme_secondes = ""
+  alarme_heure = ""
+  alarme_minutes = ""
+  
+  # Demande pour la mise en place d'une alarme 
+ 
+  print("Voulez-vous programmez un reveil ? (y/n)" )
 
+  alarme = input()
+  
+
+  # Mise en place de l'alarme
+  if alarme == "y":
+    print("Veuillez notez l'heure :")
+    alarme_heure = int(input())
+    print("Les minutes :")
+    alarme_minutes = int(input())
+    print("Les secondes :")
+    alarme_secondes = int(input())
+  
+  # Demande pour l'affichage 
+  print("Quelle type d'affichage voulez-vous ? (EU/UK)")
+  
+  affichage = input()
+
+  # Boucle qui calcule le temps et affiche l'heure selon le type d'affichage demandé
   while temps == True:
 
     secondes += 1
@@ -24,8 +49,11 @@ def votre_heure(heure, minutes, secondes, affichage):
         print("L'heure est :", heure - 12 , ":", minutes, ":", secondes, "AM.") 
       else:
         print("L'heure est :", heure, ":", minutes, ":", secondes, "PM.") 
-
+    
+    if alarme_heure == heure and alarme_minutes == minutes and alarme_secondes == secondes:
+      print("C'est l'heure !!!!")
+      break
     time.sleep(1)
     
-
-votre_heure(23, 59, 50, "EU")
+# Notez l'heure (Heure, Minutes, Secondes)
+votre_heure(23, 59, 50)
