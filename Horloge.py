@@ -1,12 +1,11 @@
 import time
 
-def votre_heure(heure, minutes, secondes):
+def votre_heure(heure, minutes, secondes, affichage):
   
   temps = True
 
   while temps == True:
-    time.sleep(1)
-    print("L'heure est :", heure, ":", minutes, ":", secondes, ".")
+
     secondes += 1
     if secondes > 59 :
       minutes += 1
@@ -17,10 +16,16 @@ def votre_heure(heure, minutes, secondes):
     if heure > 23 :
       heure = 0
     
+    if affichage == "EU":
+      print("L'heure est :", heure, ":", minutes, ":", secondes, ".")
+      
+    elif affichage == "UK":
+      if heure > 12 :
+        print("L'heure est :", heure - 12 , ":", minutes, ":", secondes, "AM.") 
+      else:
+        print("L'heure est :", heure, ":", minutes, ":", secondes, "PM.") 
 
-votre_heure(23, 59, 50)
+    time.sleep(1)
+    
 
-
-
-  
-  
+votre_heure(23, 59, 50, "EU")
